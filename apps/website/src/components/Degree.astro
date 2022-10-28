@@ -1,0 +1,43 @@
+---
+import Icon from './Icon.astro';
+import DateRange from './DateRange.astro';
+import { makeId } from '../helpers';
+
+export interface Props {
+  degree: string;
+  school: string;
+  start: Date;
+  location?: string;
+  end: Date;
+  gpa?: number;
+}
+
+const { degree, school, start, end, gpa, location } = Astro.props;
+const strippedSchool = makeId(school);
+const strippedDegree = makeId(degree);
+const id = `education-${strippedSchool}-${strippedDegree}`;
+---
+
+<section id={id} class="mb-2">
+  <a href={`#${id}`}>
+    <p class="text-base font-bold">
+      {degree}
+    </p>
+    <p class="text-base font-bold text-rose-700">
+      {school}
+    </p>
+    <DateRange start={start} end={end} />
+    <div class="flex items-center">
+      <Icon name="map-marker" />
+      <span>{location}</span>
+    </div>
+    {
+      gpa && (
+        <div class="flex items-center">
+          <Icon name="school" />
+          <span>{gpa}</span>
+        </div>
+      )
+    }
+  </a>
+</section>

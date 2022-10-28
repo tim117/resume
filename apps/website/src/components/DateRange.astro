@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { formatDate, makeId } from '../helpers';
+
+export interface Props {
+  start: Date;
+  end?: Date;
+}
+
+const { section, start, end } = Astro.props;
+const formattedStart = formatDate(start);
+const formattedEnd = end ? formatDate(end) : 'Present';
+const id = `date-range-${formattedStart}-${formattedEnd}`;
+---
+
+<div id={id}>
+  <Icon class="inline-block w-5 mr-2" pack="mdi" name="calendar" />
+  <span id={`${id}-start-date}`}>
+    {formattedStart}
+  </span>
+  &nbsp;-&nbsp;
+  <span id={`${id}-end-date`}>
+    {formattedEnd}
+  </span>
+</div>

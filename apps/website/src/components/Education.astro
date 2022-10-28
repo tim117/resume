@@ -1,0 +1,16 @@
+---
+import Degree from './Degree.astro';
+import type { Props as DegreeProps } from './Degree.astro';
+
+export interface Props {
+  degrees: DegreeProps[];
+}
+
+const { degrees } = Astro.props;
+---
+
+<article>
+  <h2>Education</h2>
+  <hr />
+  {degrees.map((degree) => <Degree {...degree} />)}
+</article>

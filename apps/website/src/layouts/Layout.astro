@@ -1,0 +1,83 @@
+---
+export interface Props {
+  description: string;
+  title: string;
+}
+
+const { description, title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="max-w-5xl mx-4 my-8 sm:mx-auto">
+    <slot />
+    <style is:global>
+      @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+      :root {
+        --accent: 124, 58, 237;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          #da62c4 30%,
+          white 60%
+        );
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: #f6f6f6;
+      }
+      code {
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0;
+      }
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin: 0;
+      }
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0;
+      }
+      h4 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin: 0;
+        --tw-text-opacity: 1;
+        color: rgb(190 18 60 / var(--tw-text-opacity));
+      }
+      h5 {
+        font-weight: 600;
+      }
+      h5,
+      p {
+        font-size: 1rem;
+        margin: 0;
+      }
+      p {
+        font-weight: 400;
+      }
+      hr {
+        border-top-width: 3px;
+        margin-bottom: 0.25rem;
+      }
+    </style>
+  </body>
+</html>

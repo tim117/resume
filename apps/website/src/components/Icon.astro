@@ -1,0 +1,34 @@
+---
+import { Icon } from 'astro-icon';
+import type { Props as AstroIconProps } from 'astro-icon/lib/Props';
+import type {
+  TailwindColor,
+  TailwindSize,
+  TailwindNumber,
+  TailwindMarginType,
+} from '../helpers';
+
+export interface Props extends AstroIconProps {
+  name: string;
+  pack?: string;
+  color?: `text-${TailwindColor}`;
+  size?: `w-${TailwindSize}`;
+  margin?: `${TailwindMarginType}-${TailwindNumber}`;
+}
+
+const { name, color, size, margin, pack } = Astro.props;
+const iconClasses = [
+  'inline-block',
+  size ?? 'w-5',
+  margin ?? 'mr-2',
+  color ?? 'text-gray-500',
+  ...(Astro.props.class ?? []),
+];
+const props = {
+  ...Astro.props,
+  class: iconClasses.join(' '),
+  pack: pack ?? 'mdi',
+};
+---
+
+<Icon {...props} name={name} />

@@ -1,0 +1,37 @@
+---
+import { makeId } from '../helpers';
+import Project from './Project.astro';
+import type { Props as ProjectProps } from './Project.astro';
+import DateRange from './DateRange.astro';
+import Icon from './Icon.astro';
+
+export interface Props {
+  company: string;
+  position: string;
+  location: string;
+  start: Date;
+  end?: Date;
+  projects: Omit<ProjectProps, 'company'>[];
+}
+
+const { company, position, location, start, end, projects } = Astro.props;
+const companyId = makeId(company);
+const positionId = makeId(position);
+
+const id = `experience-${companyId}-${positionId}`;
+---
+
+<section id={id} class="mb-2">
+  <a href={`#${id}`}>
+    <h3>{position}</h3>
+    <h4>{company}</h4>
+    <div class="flex justify-between items-center">
+      <DateRange start={start} end={end} />
+      <div class="flex items-center">
+        <Icon name="map-marker" />
+        <span>{location}</span>
+      </div>
+    </div>
+    {projects.map((project) => <Project company={company} {...project} />)}
+  </a>
+</section>

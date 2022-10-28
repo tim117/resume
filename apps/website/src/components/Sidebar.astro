@@ -1,0 +1,17 @@
+---
+import Education from './Education.astro';
+import Skills from './Skills.astro';
+import type { Props as DegreeProps } from './Degree.astro';
+
+export interface Props {
+  degrees: DegreeProps[];
+  skills: string[];
+}
+
+const { degrees, skills } = Astro.props;
+---
+
+<article>
+  <Education degrees={degrees} />
+  <Skills skills={skills} />
+</article>

@@ -1,0 +1,18 @@
+---
+import Experience from './Experience.astro';
+import type { Props as ExperienceProps } from './Experience.astro';
+
+export interface Props {
+  experiences: ExperienceProps[];
+}
+
+const { experiences } = Astro.props;
+---
+
+<article id="experience">
+  <h2>
+    <a href="#experience">Experience</a>
+  </h2>
+  <hr />
+  {experiences.map((experience) => <Experience {...experience} />)}
+</article>
