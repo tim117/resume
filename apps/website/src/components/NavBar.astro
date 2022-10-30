@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+
+export interface Props {
+  links: { href: string; display: string }[];
+}
+
+const { links } = Astro.props;
+---
+
+<nav class="p-4 no-print bg-rose-700 text-white flex justify-between">
+  <div><Icon name="money" color="text-white" size="w-6" /></div>
+  <ul class="flex">
+    {
+      links.map((link) => (
+        <li class="font-medium text-lg hover:text-red-50 transition-all">
+          <a href={`${link.href}`}>{link.display}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

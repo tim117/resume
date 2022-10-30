@@ -1,4 +1,6 @@
 ---
+import NavBar from '../components/NavBar.astro';
+
 export interface Props {
   description: string;
   title: string;
@@ -17,8 +19,11 @@ const { description, title } = Astro.props;
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
-  <body class="max-w-5xl mx-4 my-8 sm:mx-auto">
-    <slot />
+  <body>
+    <NavBar links={[{ href: '/', display: 'Resume' }]} />
+    <div class="max-w-5xl mx-4 my-8 sm:mx-auto">
+      <slot />
+    </div>
     <style is:global>
       @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
       :root {
@@ -35,7 +40,7 @@ const { description, title } = Astro.props;
       }
       html {
         font-family: system-ui, sans-serif;
-        background-color: #f6f6f6;
+        background-color: #fff;
       }
       code {
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
@@ -77,6 +82,12 @@ const { description, title } = Astro.props;
       hr {
         border-top-width: 3px;
         margin-bottom: 0.25rem;
+      }
+
+      @media print {
+        .no-print {
+          display: none;
+        }
       }
     </style>
   </body>

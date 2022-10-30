@@ -28,7 +28,8 @@ const props = {
   ...Astro.props,
   class: iconClasses.join(' '),
   pack: pack ?? 'mdi',
+  name,
 };
 ---
 
-<Icon {...props} name={name} />
+<Icon {...props} />

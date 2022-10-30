@@ -2,29 +2,21 @@
 import Icon from './Icon.astro';
 import DateRange from './DateRange.astro';
 import { makeId } from '../helpers';
+import type { Education } from '../data/resume';
 
-export interface Props {
-  degree: string;
-  school: string;
-  start: Date;
-  location?: string;
-  end: Date;
-  gpa?: number;
-}
+export interface Props extends Education {}
 
-const { degree, school, start, end, gpa, location } = Astro.props;
-const strippedSchool = makeId(school);
-const strippedDegree = makeId(degree);
-const id = `education-${strippedSchool}-${strippedDegree}`;
+const { id, degree, institution, start, end, grade, location } = Astro.props;
+const displayId = makeId('education', id);
 ---
 
-<section id={id} class="mb-2">
-  <a href={`#${id}`}>
+<section id={displayId} class="mb-2">
+  <a href={`#${displayId}`}>
     <p class="text-base font-bold">
       {degree}
     </p>
     <p class="text-base font-bold text-rose-700">
-      {school}
+      {institution}
     </p>
     <DateRange start={start} end={end} />
     <div class="flex items-center">
@@ -32,10 +24,10 @@ const id = `education-${strippedSchool}-${strippedDegree}`;
       <span>{location}</span>
     </div>
     {
-      gpa && (
+      grade && (
         <div class="flex items-center">
           <Icon name="school" />
-          <span>{gpa}</span>
+          <span>{grade}</span>
         </div>
       )
     }

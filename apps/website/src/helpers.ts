@@ -11,11 +11,23 @@ export function formatDate(date: Date, options?: FormatDateOptions) {
   );
 }
 
-export function makeId(text: string) {
-  return text.replace(/[\s,._';:/+`@#$%^&*)(=|}{[\]]/g, '-').toLowerCase();
+export function makePossessive(noun: string) {
+  if (noun.endsWith('s')) {
+    return noun + "'";
+  }
+  return noun + "'s";
 }
 
-export type TailwindColor = `${TailwindColorName}-${TailwindColorValue}`;
+export function makeId(...text: string[]) {
+  return text
+    .join('-')
+    .replace(/[^0-9a-zA-Z]/g, '-')
+    .toLowerCase();
+}
+
+export type TailwindColor =
+  | `${TailwindColorName}-${TailwindColorValue}`
+  | 'white';
 
 type TailwindColorName =
   | 'slate'

@@ -3,187 +3,33 @@ import Experiences from '../components/Experiences.astro';
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import data from '../data/resume';
+import { makePossessive } from '../helpers';
+
+const possessiveName = makePossessive(data.name());
 ---
 
-<!-- TODO: Get data from database. -->
 <Layout
-  description="Timothy Altemus' resume built with Astro."
-  title="Timothy Altemus Resume">
+  description={`${possessiveName}'s resume built with Astro (https://astro.build/).`}
+  title={`${possessiveName} Resume`}>
   <header>
     <Header
-      name="Timothy Altemus"
-      position="Software Engineer"
+      name={data.name()}
+      position={data.position()}
       contact={{
-        email: 'timmydaltemus@gmail.com',
-        linkedin: 'timothyaltemus',
-        location: 'Austin, TX',
-        phoneNumber: '(832) 359-7707',
+        email: data.contactData().email,
+        location: data.contactData().location,
+        phoneNumber: data.contactData().phoneNumber,
+        socials: data.contactData().socials,
       }}
     />
   </header>
   <div class="flex justify-between items-start flex-wrap">
     <main class="inline-block w-full pr-4 sm:w-2/3">
-      <Experiences
-        experiences={[
-          {
-            company: 'Google',
-            position: 'Software Engineer',
-            location: 'Austin, TX',
-            start: new Date(Date.parse('10-25-2021')),
-            projects: [
-              {
-                name: 'Google Cloud Platform - Visual Code Designer',
-                kpis: [
-                  'Eliminated new user onboarding time by rebuilding the UI to be more intuitive for users.',
-                  'Landed first customer for greenfield project by desiging, building, and demoing solution to deploy Chrome Extensions from generated code.',
-                  'Extended application beyond Google Cloud deployments by designinging solution that can be extended to any platform.',
-                ],
-              },
-              {
-                name: 'Google Works - Supplier Services',
-                kpis: [
-                  'Extended application to account for more than 6 times as many users by leading a team of 7 engineers to implement over 15 major features.',
-                  'Expanded supplier onboarding functionality to account for the full information of over 100 new regions and over 90% of supplier enrollments at Google.',
-                  'Improved user experience for over 100,000 users by designing solutions to consolidate multiple legacy application functionalities into a new streamlined format.',
-                  'Increased supplier onboarding satisfaction by giving them full control over their data through the onboarding process.',
-                ],
-              },
-            ],
-          },
-          {
-            company: 'Credera',
-            position: 'Senior Software Engineer',
-            location: 'Houston, TX',
-            start: new Date(Date.parse('09-01-2020')),
-            end: new Date(Date.parse('10-25-2021')),
-            projects: [
-              {
-                name: 'Multinational Staffing Company',
-                kpis: [
-                  'Removed long running data sync operations by architecting and leading development on solution to convert infrastructure to an event driven pattern using Azure Event Grids, web hooks, and serverless functions.',
-                  'Increased user satisfaction by redesigning legacy front-end application to a server side rendered Next JS application.',
-                  'Consolidated end to end user experience by developing custom ATS, HRIS, and time-tracking systems with .NET services to manage company data.',
-                  'Set up 13 key data integrations for data migrations to prepare for custom built solutions.',
-                  'Eliminated data requests for staffing team by creating new job board and candidate dashboard allowing candidates to have full control of their data allowing real time updates accross systems for efficient staffing.',
-                  'Saved client over $120,000 anually by migrating legacy on-premisis apps to Azure by setting up Network integrations, VMs, and SQL Server managed databases and configuring them with security best practices.',
-                ],
-              },
-              {
-                name: 'Online Home Services Marketplace',
-                kpis: [
-                  'Improved the time to book professionals by more than 4 days per project by architecting and implementing solution to process images received via text messages based on the message’s metadata.',
-                  'Automated the complete fullfillment process by designing, documenting, and presenting proposed solution and leading the development.',
-                  'Increased price quote accuracy by developing prepriced pricing model for home painting in Java microservices to calculate a more accurate price range based on the measurements of the house and realtime labor and material costs based on the location.',
-                  'Redesigned UI for the prepriced offers section of the frontend application to use dynamic branding to match the source company’s branding using Tailwind and Vue.js.',
-                  'Increased conversion rate 30% by setting up A/B tests and implementing the most successful solution using Adobe Target and Vue.js.',
-                ],
-              },
-            ],
-          },
-          {
-            company: 'Avanade',
-            position: 'Full Stack Software Engineer',
-            location: 'Seattle, WA',
-            start: new Date(Date.parse('05/20/2019')),
-            end: new Date(Date.parse('09/01/2020')),
-            projects: [
-              {
-                name: 'Microsoft Corporation',
-                kpis: [
-                  'Adapted a large business application to meet new requirements for government contract, delivery, and sales specifications by developing a .NET MVC REST API and Angular web components.',
-                  'Created an automated testing suite to run unit, integration, and UI tests and integrated respective tests with the UAT test plans.',
-                  'Constructed multiple build and release pipelines to test, detect security issues, and deploy applications.',
-                ],
-              },
-              {
-                name: 'Avanade Inc.',
-                kpis: [
-                  'Increased interaction on projects to over 90% of meeting participants by leading agile development team on an internal project to create a Microsoft Teams application to manage internal talent development using TypeScript.',
-                  'Received buy-in from customer by creating and presenting working prototype mock-up for the application UI using Figma.',
-                  'Designed architecture and set up startup project for the internal application using Docker, NodeJS, and React hosted on Azure.',
-                  'Automated by building CI & CD pipelines to test, check code standards, and deploy the solution to Azure.',
-                ],
-              },
-              {
-                name: 'Local Insurance Company',
-                kpis: [
-                  'Delivered mobile first web application for insurance quoting as part of an agile development team.',
-                  'Created new user experience for customers to self service insurance quotes front end angular components and ASP.NET REST API endpoints for the application.',
-                  'Increased quote accuracy for customers by 25% by adapting machine learning models.',
-                ],
-              },
-              {
-                name: 'Multinational Oilfield Services Company',
-                kpis: [
-                  'Increased efficiency of processing IoT data by over 400 hours by developing a series of orchestrated serverless functions.',
-                  'Decreased validation time by 80% by developing validation tool to verify conversion of sensor data from IoT technology using .NET and Xamarin.',
-                ],
-              },
-            ],
-          },
-        ]}
-      />
+      <Experiences experiences={data.experience()} />
     </main>
     <footer class="inline-block w-full sm:w-1/3">
-      <Sidebar
-        degrees={[
-          {
-            degree: 'M.S. Computer Science',
-            school: 'Georgia Tech University',
-            start: new Date(Date.parse('01-01-2023')),
-            end: new Date(Date.parse('12-31-2024')),
-            location: 'Atlanta, GA',
-          },
-          {
-            degree: 'B.B.A Management Information Systems',
-            school: 'University of Houston',
-            start: new Date(Date.parse('09-01-2016')),
-            end: new Date(Date.parse('12-31-2019')),
-            location: 'Houston, TX',
-            gpa: 3.8,
-          },
-        ]}
-        skills={[
-          'TypeScript',
-          'Go',
-          'SQL',
-          'Java',
-          'C#',
-          'Rust',
-          'Python',
-          'Dart',
-          'JavaScript',
-          'HTML',
-          'CSS',
-          'PHP',
-          'SASS',
-          '.NET',
-          'C++',
-          'React',
-          'Angular',
-          'Vue',
-          'Svelte',
-          'Svelte Native',
-          'React Native',
-          'Git',
-          'Mercurial',
-          'Node.js',
-          'Bazel',
-          'Spring Boot',
-          'GraphQL',
-          'NoSQL',
-          'Docker',
-          'Kubernetes',
-          'Microsoft Azure',
-          'Amazon Web Services',
-          'Google Cloud Platform',
-          'Microservices',
-          'Graph Databases',
-          'Firebase',
-          'REST',
-          'Application Architecture',
-        ]}
-      />
+      <Sidebar degrees={data.education()} skills={data.skills()} />
     </footer>
   </div>
 </Layout>

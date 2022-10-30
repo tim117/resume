@@ -1,0 +1,17 @@
+---
+import type { SocialMediaIcon } from '../data/resume';
+import Icon from './Icon.astro';
+
+export interface Props {
+  display: string;
+  icon?: SocialMediaIcon;
+  url: string;
+}
+
+const { icon, display, url } = Astro.props;
+---
+
+<a class="flex items-center" href={url} target="_blank">
+  {icon && <Icon pack="simple-icons" name={icon} />}
+  <span>{display}</span>
+</a>
