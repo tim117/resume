@@ -1,21 +1,20 @@
 ---
-export interface Props {
-  company: string;
-  name: string;
-  kpis: string[];
+import type { Project } from '../data/resume';
+import { makeId } from '../helpers';
+
+export interface Props extends Project {
+  organizationId: string;
 }
 
-const { company, name, kpis } = Astro.props;
-const id = `${company.toLowerCase()}-${name
-  .toLowerCase()
-  .replace(/[\s._]/g, '-')}-project-details`;
+const { id, organizationId, name, details } = Astro.props;
+const displayId = makeId(organizationId, 'project', id);
 ---
 
 <section class="mb-2">
-  <a id={id} href={`#${id}`}>
+  <a id={displayId} href={`#${displayId}`}>
     <h5 class="font-bold">{name}</h5>
     <ul class="my-0 list-disc list-inside">
-      {kpis.map((kpi) => <li class="ml-2">{kpi}</li>)}
+      {details.map((detail) => <li class="ml-2">{detail}</li>)}
     </ul>
   </a>
 </section>

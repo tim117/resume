@@ -4,27 +4,20 @@ import Project from './Project.astro';
 import type { Props as ProjectProps } from './Project.astro';
 import DateRange from './DateRange.astro';
 import Icon from './Icon.astro';
+import type { Experience } from '../data/resume';
 
-export interface Props {
-  company: string;
-  position: string;
-  location: string;
-  start: Date;
-  end?: Date;
-  projects: Omit<ProjectProps, 'company'>[];
-}
+export interface Props extends Experience {}
 
-const { company, position, location, start, end, projects } = Astro.props;
-const companyId = makeId(company);
-const positionId = makeId(position);
+const { id, organization, position, location, start, end, projects } =
+  Astro.props;
 
-const id = `experience-${companyId}-${positionId}`;
+const displayId = makeId('experience', id);
 ---
 
-<section id={id} class="mb-2">
-  <a href={`#${id}`}>
+<section id={displayId} class="mb-2">
+  <a href={`#${displayId}`}>
     <h3>{position}</h3>
-    <h4>{company}</h4>
+    <h4>{organization}</h4>
     <div class="flex justify-between items-center">
       <DateRange start={start} end={end} />
       <div class="flex items-center">
@@ -32,6 +25,10 @@ const id = `experience-${companyId}-${positionId}`;
         <span>{location}</span>
       </div>
     </div>
-    {projects.map((project) => <Project company={company} {...project} />)}
+    {
+      projects.map((project) => (
+        <Project organizationId={displayId} {...project} />
+      ))
+    }
   </a>
 </section>

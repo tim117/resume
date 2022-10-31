@@ -1,3 +1,4 @@
 node_modules
 pnpm-lock.yaml
 .vscode
+apps/website/src/data/resume_data.ts
