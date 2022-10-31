@@ -9,10 +9,18 @@ import type {
 } from '../helpers';
 
 export interface Props extends AstroIconProps {
+  /** Name of the icon that should be displayed. */
   name: string;
+  /**
+   * Name of the icon pack that contains the icon with the given name. Defaults
+   * to `mdi` (Material Design Icons).
+   */
   pack?: string;
+  /** Color that the icon should be rendered. Defaults to `text-grey-500`. */
   color?: `text-${TailwindColor}`;
+  /** Size that the icon should be rendered. Defaults to `w-5` (`1.25rem`). */
   size?: `w-${TailwindSize}`;
+  /** Margin around the icon. Defaults to mr-2 (`margin-right: 0.5rem`). */
   margin?: `${TailwindMarginType}-${TailwindNumber}`;
 }
 
@@ -22,6 +30,8 @@ const iconClasses = [
   size ?? 'w-5',
   margin ?? 'mr-2',
   color ?? 'text-gray-500',
+  // Any classes listed directly on the astro props should override the values
+  // for the default included classes.
   ...(Astro.props.class ?? []),
 ];
 const props = {

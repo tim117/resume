@@ -3,8 +3,11 @@ import type { SocialMediaIcon } from '../data/resume';
 import Icon from './Icon.astro';
 
 export interface Props {
+  /** Text to display for the social media link. */
   display: string;
+  /** Icon to display before the display text fro the social media link.  */
   icon?: SocialMediaIcon;
+  /** Url to the profile on the social media platform. */
   url: string;
 }
 
