@@ -4,7 +4,9 @@ import Skills from './Skills.astro';
 import type { Props as DegreeProps } from './Degree.astro';
 
 export interface Props {
+  /** List of degrees for the resume. */
   degrees: DegreeProps[];
+  /** List of skills for the resume. */
   skills: string[];
 }
 

@@ -6,8 +6,11 @@ import SocialMediaDisplay from './SocialMedia.astro';
 import type { ContactData } from '../data/resume';
 
 export interface Props {
+  /** Name of the person who the resume describes. */
   name: string;
+  /** Position the person the resume describes is pursuing. */
   position: string;
+  /** Contact data for the person the resume describes. */
   contact: ContactData;
 }
 

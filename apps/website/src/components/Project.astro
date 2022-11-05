@@ -3,6 +3,7 @@ import type { Project } from '../data/resume';
 import { makeId } from '../helpers';
 
 export interface Props extends Project {
+  /** Id for the organization that the project belongs to. */
   organizationId: string;
 }
 
