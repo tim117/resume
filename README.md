@@ -2,6 +2,8 @@
 
 This is a resume builder template that allows you to easily build a formatted resume website.
 
+Resumes are always annoying to format in tools like Google docs or Microsoft word. Skip the hard to format tools and make your resume look exactly how you imagine using tailwind css.
+
 ## Getting Started
 
 Create a repository from this template to have a beautifully formatted resume.
