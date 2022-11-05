@@ -1,0 +1,28 @@
+name: Bug Report 🐞
+description: Report a reproducible bug or regression.
+title: "Bug: "
+body:
+  - type: textarea
+    attributes:
+      label: Describe the Bug
+      description: A brief description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: A brief description of what you expected to happen.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Link to reproduction
+      description: "A link to a minimal reproduction. This can be a GitHub repository, a [StackBlitz](https://stackblitz.com/), or a [CodeSandbox](https://codesandbox.io/) minimal reproduction. Please note: the reproduction should include only changes that related to the issue."
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps To Reproduce
+      description: Please provide a description of how to reproduce the issue based on the linked minimal reproduction. Screenshots can be provided in the issue body below. If using code blocks, make sure that [syntax highlighting is correct](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) and double check that the rendered preview is not broken.
+    validations:
+      required: true

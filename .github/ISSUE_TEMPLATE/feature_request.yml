@@ -1,0 +1,26 @@
+name: Feature Request 👷
+description: Suggest an idea to improve the project.
+title: "New Feature:"
+body:
+  - type: textarea
+    attributes:
+      label: Describe the problem that lead to your feature request
+      description: Briefly explain the background to your problem.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the proposed solution to your problem
+      description: Provide a brief description of what your ideal solution would look like.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Desribe alternatives considered
+      description: Provide a brief description of any alternative solutions that were considered.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Supporting details
+      description: Add any addition details that you would like to mention about the feature.
