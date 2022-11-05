@@ -27,8 +27,11 @@ export type Experience = {
 
 /** Represents a project that took place in an experience. */
 export type Project = {
+  /** Unique identifier for the project. */
   id: string;
+  /** Name of the project. */
   name: string;
+  /** List of details  */
   details: string[];
 };
 
@@ -37,10 +40,18 @@ export type Project = {
  * This can be anything that granted a degree or certificate of any kind.
  */
 export type Education = {
+  /** Unique identifier for the education.  */
   id: string;
+  /** Name of the institution that provided the degree or certification. */
   institution: string;
+  /** Type of degree or certification that was granted by the institution. */
   degree: string;
+  /**
+   * Grade representation (e.g. 4.0, A+, 100%, etc...) received for
+   * the degree from the institution.
+   */
   grade?: string;
+  /** Location of the institution providing the degree. */
   location?: string;
 } & DateRange;
 
@@ -73,7 +84,8 @@ export type SocialMediaIcon =
   | 'xbox'
   | 'youtube';
 
-type Url = `${'http' | 'https'}://${string}`;
+/** A url with http or https protocol. */
+type Url = `${'http' | 'https'}://${string}.${string}`;
 
 /**
  * Representation of a social media account with an icon.

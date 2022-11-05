@@ -3,11 +3,13 @@ import Icon from './Icon.astro';
 import { formatDate, makeId } from '../helpers';
 
 export interface Props {
+  /** Start of the date range.  */
   start: Date;
+  /** End of the date range. */
   end?: Date;
 }
 
-const { section, start, end } = Astro.props;
+const { start, end } = Astro.props;
 const formattedStart = formatDate(start);
 const formattedEnd = end ? formatDate(end) : 'Present';
 const id = `date-range-${formattedStart}-${formattedEnd}`;
