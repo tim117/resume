@@ -47,8 +47,6 @@ pnpm --filter website build
 
 This will create a folder at `apps/website/dist` that will contain the static assests to deploy in any place you can deploy a static website.
 
-There are many ways to do this, but I find one of the easiest ways to do this is with
-
 ## Features
 
 ### Resume Display
